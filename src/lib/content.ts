@@ -1,0 +1,181 @@
+/**
+ * All page copy as typed data. Components stay presentational.
+ * House style: sentence case, plain punctuation, no dashes used as asides.
+ */
+
+export const hero = {
+  label: "Managed office services in Lahore",
+  headline: ["Three functions.", "One accountable partner."],
+  lede: "Creston Biz takes over the office operations, workforce and facilities functions that do not need to sit inside your organisation. Recruited, deployed and managed against a written service level.",
+  trust: "Based at NASTP, Lahore Cantt. Deploying across Punjab.",
+} as const;
+
+export type Stat = { readonly value: number; readonly prefix?: string; readonly suffix?: string; readonly label: string };
+
+export const stats: ReadonlyArray<Stat> = [
+  { value: 14, suffix: "+", label: "Years of operations leadership" },
+  { value: 10, prefix: "USD ", suffix: "M+", label: "Budgets managed for donor programmes" },
+  { value: 1000, suffix: "+", label: "People across workforces led" },
+  { value: 60, prefix: "30 to ", label: "Day pilot before you commit" },
+];
+
+export type Service = {
+  readonly id: "office-operations" | "workforce" | "facilities";
+  readonly kind: "Managed service" | "Staff augmentation";
+  readonly name: string;
+  readonly shortName: string;
+  readonly promise: string;
+  readonly image: { readonly src: string; readonly alt: string; readonly video?: string };
+  readonly scope: ReadonlyArray<string>;
+};
+
+export const services: ReadonlyArray<Service> = [
+  {
+    id: "office-operations",
+    kind: "Managed service",
+    name: "Office Operations Outsourcing",
+    shortName: "Office operations",
+    promise: "We run the day-to-day office so your team does not have to: reception, records, supplies, travel and vendors, with agreed deliverables and one point of accountability.",
+    image: { src: "/images/tiles/desk.jpg", alt: "Two colleagues working together at a bright office desk", video: "/video/tile-desk.mp4" },
+    scope: [
+      "Reception, front office and visitor coordination",
+      "Office opening, closing and daily readiness",
+      "Documentation, records and administrative support",
+      "Meeting rooms, stationery and office supplies",
+      "Travel, logistics and routine movement",
+      "Vendor follow-up and service coordination",
+      "Monthly management reporting and issue trackers",
+      "SOP development and process improvement",
+    ],
+  },
+  {
+    id: "workforce",
+    kind: "Staff augmentation",
+    name: "Workforce Solutions",
+    shortName: "Workforce",
+    promise: "You get the people and the continuity. We handle sourcing, employment paperwork, payroll coordination and the replacement guarantee.",
+    image: { src: "/images/tiles/team.jpg", alt: "A team reviewing work together around a laptop", video: "/video/tile-team.mp4" },
+    scope: [
+      "Workforce planning against a confirmed requirement",
+      "Sourcing, screening and shortlisting",
+      "Client interview and selection support",
+      "Employment and deployment documentation",
+      "Payroll coordination, EOBI and PESSI compliance",
+      "Attendance and timesheet management",
+      "Replacement and backup for agreed roles",
+      "Renewal, scale-up, reduction and close-out",
+    ],
+  },
+  {
+    id: "facilities",
+    kind: "Managed service",
+    name: "Facilities Management",
+    shortName: "Facilities",
+    promise: "We manage the physical workplace, from maintenance and cleaning vendors to safety audits, so nobody on your team is chasing a facilities issue.",
+    image: { src: "/images/tiles/facade.jpg", alt: "A technician working on the facade of an office building", video: "/video/tile-facade.mp4" },
+    scope: [
+      "Preventive and reactive maintenance coordination",
+      "Cleaning, janitorial and pest-control vendors",
+      "Security and access-control coordination",
+      "Utilities, HVAC and building-systems oversight",
+      "Asset register and inventory management",
+      "Health, safety and compliance audits",
+      "Vendor contracts and SLA tracking",
+      "Monthly facilities reporting and cost tracking",
+    ],
+  },
+];
+
+export type Highlight = { readonly icon: "FileCheck2" | "RefreshCcw" | "Receipt" | "LayoutDashboard"; readonly title: string; readonly body: string };
+
+/** Small bento tiles. These are the reasons to choose Creston Biz, stated once. */
+export const highlights: ReadonlyArray<Highlight> = [
+  { icon: "FileCheck2", title: "A written service level", body: "Every engagement runs on a signed scope, an SLA and a monthly report, so performance is measured, not assumed." },
+  { icon: "RefreshCcw", title: "Replacement guarantee", body: "If a deployed person leaves or underperforms, a vetted backup steps in. No re-tendering." },
+  { icon: "Receipt", title: "Transparent rate build", body: "Salary, statutory cost, provisions and our margin are shown line by line on every quote." },
+  { icon: "LayoutDashboard", title: "One contract, one invoice", body: "All three functions, one agreement and one monthly invoice. One person accountable." },
+];
+
+export type Layer = {
+  readonly id: string;
+  readonly title: string;
+  readonly body: string;
+  readonly items: ReadonlyArray<string>;
+};
+
+/** The exploded view: what a Creston Biz engagement is made of, bottom to top. */
+export const stack = {
+  label: "How we work",
+  heading: "One engagement, five working layers.",
+  lede: "Every layer is something you can inspect and measure.",
+  hint: "Scroll to pull the engagement apart",
+  layers: [
+    { id: "contract", title: "Contract and service level", body: "A signed scope sheet, an MSA or SOW, payment terms and the service level that everything else reports against.", items: ["Scope sheet", "MSA or SOW", "SLA"] },
+    { id: "team", title: "Deployed team", body: "People recruited only against your confirmed requirement, selected with you, onboarded on site.", items: ["Sourcing", "Selection", "Onboarding"] },
+    { id: "compliance", title: "Payroll and compliance", body: "Employment paperwork, payroll coordination, EOBI and PESSI contributions, handled without your HR team.", items: ["Payroll", "EOBI", "PESSI"] },
+    { id: "reporting", title: "Attendance and reporting", body: "Rosters, timesheets, issue logs and a monthly dashboard so you always know what was delivered.", items: ["Rosters", "Issue log", "Dashboard"] },
+    { id: "facilities", title: "Facilities and vendors", body: "Maintenance, cleaning, security and utilities vendors managed against their own service levels.", items: ["Maintenance", "Vendors", "Audits"] },
+  ] as ReadonlyArray<Layer>,
+} as const;
+
+export type Step = { readonly n: number; readonly title: string; readonly body: string; readonly closes: string };
+
+export const processSteps: ReadonlyArray<Step> = [
+  { n: 1, title: "Diagnose", body: "Discovery and scope mapping with your team.", closes: "Signed scope sheet" },
+  { n: 2, title: "Quote", body: "Rate build, service fee and tax treatment, line by line.", closes: "Approved quotation" },
+  { n: 3, title: "Contract", body: "MSA, SOW or PO, payment terms and the service level.", closes: "Signed agreement" },
+  { n: 4, title: "Mobilise", body: "Recruit or select only against the confirmed requirement.", closes: "Confirmed deployment list" },
+  { n: 5, title: "Deploy", body: "Onboarding, site orientation and reporting lines.", closes: "Go-live confirmation" },
+  { n: 6, title: "Operate", body: "Attendance, payroll coordination, check-ins and a monthly dashboard.", closes: "Monthly service report" },
+];
+
+export const pricing = {
+  label: "Pricing",
+  heading: "A published formula, with the margin shown.",
+  lede: "Every quotation can be defended to your procurement or finance team because every component of the rate is shown.",
+  components: ["Gross salary", "Statutory cost (EOBI, PESSI)", "Leave and benefit provision", "Recruitment and onboarding", "Payroll and operations", "Replacement contingency", "Service margin"],
+  result: "Client rate, before sales tax",
+  note: "Headcount, sites, hours and service levels shape the number, so there is no generic rate card. A short call gets you a rate build for your requirement.",
+  cta: "Request a rate build",
+} as const;
+
+export type Priority = "Priority focus" | "Active" | "Selective";
+export type Industry = { readonly icon: "Building2" | "HeartHandshake" | "Landmark" | "Cpu" | "Factory" | "GraduationCap"; readonly name: string; readonly need: string; readonly priority: Priority };
+
+export const industries: ReadonlyArray<Industry> = [
+  { icon: "Building2", name: "SMEs and growing companies", need: "Support staff and office discipline without building a large internal support team.", priority: "Priority focus" },
+  { icon: "HeartHandshake", name: "NGOs, INGOs and donor projects", need: "Compliant, documented, scalable staffing with controlled office-operations overhead.", priority: "Priority focus" },
+  { icon: "Landmark", name: "Banks, fintech and professional services", need: "Reliable support roles and consistent office administration.", priority: "Active" },
+  { icon: "Cpu", name: "Technology companies", need: "Lean support functions while headcount scales quickly.", priority: "Active" },
+  { icon: "Factory", name: "Manufacturing and industrial offices", need: "Office and admin support without adding fixed overhead.", priority: "Selective" },
+  { icon: "GraduationCap", name: "Training and education networks", need: "Scalable administrative and support teams across multiple sites.", priority: "Selective" },
+];
+
+export const founder = {
+  name: "Syed Hasan Ghazanfar",
+  role: "Founder and Chief Executive Officer",
+  photo: { portrait: "/images/founder-portrait.jpg", wide: "/images/founder-wide.jpg" },
+  education: ["MBA, Human Resource and Development, Superior University Lahore", "BBA (Hons), Superior University Lahore"],
+  bio: [
+    "Hasan is a senior administration, operations and government-liaison leader with a career spanning manufacturing, corporate and internationally donor-funded environments. He has run multi-site offices, managed fleets and facilities, and controlled administration and logistics budgets for programmes funded by FCDO, the World Bank and USAID.",
+    "His career spans senior roles at Chawla Group of Industries, the International Water Management Institute, Adam Smith International and Ferozsons Laboratories, directing HR, administration, procurement, fleet and facilities functions for large workforces. He founded Creston Biz to bring that operational discipline to Pakistani organisations as a managed service.",
+  ],
+  experience: {
+    label: "Has worked directly with",
+    donors: ["FCDO", "DFID", "World Bank", "USAID"],
+    government: ["FBR", "Pakistan Customs", "LESCO", "LDA", "Labour Department"],
+    employers: ["Chawla Group of Industries", "International Water Management Institute", "Adam Smith International", "Ferozsons Laboratories"],
+  },
+  teamNote: "The delivery team grows with each engagement. New team members are introduced here as they join.",
+} as const;
+
+export const contactCopy = {
+  label: "Get started",
+  heading: "Start with one role. Grow from there.",
+  lede: "You will get a scope, a transparent rate and a low-risk way to see the model work before committing further.",
+  interests: ["Office Operations Outsourcing", "Workforce Solutions", "Facilities Management", "Not sure yet, I need a recommendation"],
+  submit: "Send inquiry",
+  pending: "Sending",
+  success: { heading: "Inquiry received.", body: "We reply within one working day. If it is urgent, call the number on this page." },
+  error: "We could not send your inquiry. Please email us directly and we will reply within one working day.",
+} as const;

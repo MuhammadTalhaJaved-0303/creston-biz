@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Creston Biz website
 
-## Getting Started
+Marketing site for Creston Biz (Creston Business Services (Private) Limited).
+Office operations, workforce and facilities outsourcing in Lahore.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router, React 19, TypeScript strict)
+- Tailwind CSS v4 (all tokens live in `src/app/globals.css`)
+- `motion` for animation, `lenis` for inertial scrolling, `zod` for form validation, `lucide-react` icons
+- Font: Plus Jakarta Sans, self-hosted via `next/font`
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm run lint
+npx tsc --noEmit
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Screenshots of any section at any viewport (dev server must be running):
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+SHOT_BASE=http://localhost:3000/ node scripts/shot.mjs "#services" .shots/services.png 1440 900
+SHOT_BASE=http://localhost:3000/ node scripts/shot.mjs walk .shots/walk.png 390 844     # whole page, frame by frame
+SHOT_BASE=http://localhost:3000/ node scripts/scrub.mjs "#stack" .shots/stack 1440 900  # pinned exploded view
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Content
 
-## Learn More
+Every word on the page comes from `src/lib/content.ts` and `src/lib/site.ts`. Edit copy there;
+components are presentational. House style: no italics, no dashes used as punctuation.
 
-To learn more about Next.js, take a look at the following resources:
+## Media
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `public/video/hero.mp4` / `hero.webm` / `hero-poster.jpg`: hero background (Pexels 5716999, free licence).
+- `public/video/tile-*.mp4`: 7-second muted loops for the service tiles (Pexels 6325845, 7643614, 34382325).
+- `public/images/tiles/*.jpg`: stills from the same clips.
+- `public/images/founder-*.jpg`: founder portrait crops. A higher-resolution original would sharpen retina rendering.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contact form
 
-## Deploy on Vercel
+The inquiry form posts to a server action (`src/app/actions/inquiry.ts`) that validates input with
+zod. Set `INQUIRY_WEBHOOK_URL` (see `.env.example`) to forward inquiries as JSON to n8n, Zapier,
+Make or any HTTPS endpoint. When unset, inquiries are logged to the server console.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Design
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The visual system and per-section briefs are documented in `DESIGN.md`.
