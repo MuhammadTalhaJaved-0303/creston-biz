@@ -35,7 +35,7 @@ components are presentational. House style: no italics, no dashes used as punctu
 
 ## Media
 
-- `public/video/hero.mp4` / `hero.webm` / `hero-poster.jpg`: hero background (Pexels 5716999, free licence).
+- `public/video/hero-poster.jpg`: hero background still (Pexels 5716999, free licence).
 - `public/video/tile-*.mp4`: 7-second muted loops for the service tiles (Pexels 6325845, 7643614, 34382325).
 - `public/images/tiles/*.jpg`: stills from the same clips.
 - `public/images/founder-*.jpg`: founder portrait crops. A higher-resolution original would sharpen retina rendering.
