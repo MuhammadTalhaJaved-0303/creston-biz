@@ -76,10 +76,8 @@ export const services: ReadonlyArray<Service> = [
     scope: [
       "Preventive and reactive maintenance coordination",
       "Cleaning, janitorial and pest-control vendors",
-      "Security and access-control coordination",
       "Utilities, HVAC and building-systems oversight",
       "Asset register and inventory management",
-      "Health, safety and compliance audits",
       "Vendor contracts and SLA tracking",
       "Monthly facilities reporting and cost tracking",
     ],
