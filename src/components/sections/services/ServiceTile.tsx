@@ -20,6 +20,7 @@ const focal: Record<Service["id"], string> = {
   "office-operations": "50% 45%",
   workforce: "50% 42%",
   facilities: "50% 58%",
+  events: "50% 40%",
 };
 
 const sizes: Record<TileLayout, string> = {

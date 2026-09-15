@@ -5,8 +5,8 @@
 
 export const hero = {
   label: "Managed office services in Lahore",
-  headline: ["Three functions.", "One accountable partner."],
-  lede: "Creston Biz takes over the office operations, workforce and facilities functions that do not need to sit inside your organisation. Recruited, deployed and managed against a written service level.",
+  headline: ["Four functions.", "One accountable partner."],
+  lede: "Creston Biz takes over the office operations, workforce, facilities and events functions that do not need to sit inside your organisation. Recruited, deployed and managed against a written service level.",
   trust: "Based at NASTP, Lahore Cantt. Deploying across Punjab.",
 } as const;
 
@@ -20,8 +20,8 @@ export const stats: ReadonlyArray<Stat> = [
 ];
 
 export type Service = {
-  readonly id: "office-operations" | "workforce" | "facilities";
-  readonly kind: "Managed service" | "Staff augmentation";
+  readonly id: "office-operations" | "workforce" | "facilities" | "events";
+  readonly kind: "Managed service" | "Staff augmentation" | "Managed events";
   readonly name: string;
   readonly shortName: string;
   readonly promise: string;
@@ -84,16 +84,24 @@ export const services: ReadonlyArray<Service> = [
       "Monthly facilities reporting and cost tracking",
     ],
   },
-];
-
-export type Highlight = { readonly icon: "FileCheck2" | "RefreshCcw" | "Receipt" | "LayoutDashboard"; readonly title: string; readonly body: string };
-
-/** Small bento tiles. These are the reasons to choose Creston Biz, stated once. */
-export const highlights: ReadonlyArray<Highlight> = [
-  { icon: "FileCheck2", title: "A written service level", body: "Every engagement runs on a signed scope, an SLA and a monthly report, so performance is measured, not assumed." },
-  { icon: "RefreshCcw", title: "Replacement guarantee", body: "If a deployed person leaves or underperforms, a vetted backup steps in. No re-tendering." },
-  { icon: "Receipt", title: "Transparent rate build", body: "Salary, statutory cost, provisions and our margin are shown line by line on every quote." },
-  { icon: "LayoutDashboard", title: "One contract, one invoice", body: "All three functions, one agreement and one monthly invoice. One person accountable." },
+  {
+    id: "events",
+    kind: "Managed events",
+    name: "Events Management",
+    shortName: "Events",
+    promise: "From concept to completion. We plan, organise and run the events that carry your name, from a small workshop to an annual dinner.",
+    image: { src: "/images/tiles/events.jpg", alt: "A speaker presenting on stage at a corporate conference", video: "/video/tile-events.mp4" },
+    scope: [
+      "Small events: meetings, workshops and seminars",
+      "Corporate events: conferences, product launches and annual dinners",
+      "Social and private parties",
+      "Venue sourcing and decor",
+      "Catering and entertainment management",
+      "Guest lists, invitations and on-site coordination",
+      "Audio, visual and staging vendors",
+      "Post-event reporting and settlement",
+    ],
+  },
 ];
 
 export type Layer = {
@@ -173,7 +181,7 @@ export const contactCopy = {
   label: "Get started",
   heading: "Start with one role. Grow from there.",
   lede: "You will get a scope, a transparent rate and a low-risk way to see the model work before committing further.",
-  interests: ["Office Operations Outsourcing", "Workforce Solutions", "Facilities Management", "Not sure yet, I need a recommendation"],
+  interests: ["Office Operations Outsourcing", "Workforce Solutions", "Facilities Management", "Events Management", "Not sure yet, I need a recommendation"],
   submit: "Send inquiry",
   pending: "Sending",
   success: { heading: "Inquiry received.", body: "We reply within one working day. If it is urgent, call the number on this page." },

@@ -13,7 +13,7 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name}: office operations, workforce and facilities outsourcing in Lahore`,
+    default: `${site.name}: office operations, workforce, facilities and events outsourcing in Lahore`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: site.locale,
     siteName: site.name,
-    title: `${site.name}: three functions, one accountable partner`,
+    title: `${site.name}: four functions, one accountable partner`,
     description: site.description,
     images: [{ url: "/video/hero-poster.jpg", width: 1600, height: 900 }],
   },

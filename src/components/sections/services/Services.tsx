@@ -1,9 +1,8 @@
-import { HighlightTile } from "@/components/sections/services/HighlightTile";
 import { ServiceTile, type TileLayout } from "@/components/sections/services/ServiceTile";
 import { Container } from "@/components/ui/Container";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { highlights, services, type Service } from "@/lib/content";
+import { services, type Service } from "@/lib/content";
 
 type Placement = { readonly layout: TileLayout; readonly className: string };
 
@@ -12,11 +11,12 @@ const placements: Record<Service["id"], Placement> = {
   "office-operations": { layout: "band", className: "md:col-span-2 xl:col-span-7 xl:row-span-2" },
   workforce: { layout: "cornerRight", className: "xl:col-span-5 xl:row-span-2" },
   facilities: { layout: "cornerLeft", className: "xl:col-span-5 xl:row-span-2" },
+  events: { layout: "band", className: "md:col-span-2 xl:col-span-7 xl:row-span-2" },
 };
 
 /**
- * The three managed functions as a bento: two photo tiles up top, the
- * facilities tile and four highlight tiles below.
+ * The four managed functions as a bento: two photo tiles up top,
+ * facilities and events below.
  */
 export function Services() {
   return (
@@ -31,7 +31,7 @@ export function Services() {
                 Everything your office needs, <span className="text-gradient">under one contract.</span>
               </>
             }
-            lede="Three managed functions, each backed by the same reporting and service-level standard."
+            lede="Four managed functions, each backed by the same reporting and service-level standard."
           />
         </Reveal>
 
@@ -46,14 +46,6 @@ export function Services() {
               </Reveal>
             );
           })}
-
-          <Reveal staggered className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:col-span-2 xl:col-span-7 xl:row-span-2">
-            {highlights.map((highlight) => (
-              <RevealItem key={highlight.title} className="h-full">
-                <HighlightTile highlight={highlight} />
-              </RevealItem>
-            ))}
-          </Reveal>
         </div>
       </Container>
     </section>
