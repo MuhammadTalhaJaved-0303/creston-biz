@@ -1,7 +1,7 @@
 # Creston Biz website
 
 Marketing site for Creston Biz (Creston Business Services (Private) Limited).
-Office operations, workforce and facilities outsourcing in Lahore.
+Facilities management, office operations and administration, and events management in Lahore.
 
 ## Stack
 

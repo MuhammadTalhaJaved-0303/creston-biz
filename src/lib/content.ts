@@ -5,8 +5,8 @@
 
 export const hero = {
   label: "Managed office services in Lahore",
-  headline: ["Four functions.", "One accountable partner."],
-  lede: "Creston Biz takes over the office operations, workforce, facilities and events functions that do not need to sit inside your organisation. Recruited, deployed and managed against a written service level.",
+  headline: ["Three functions.", "One accountable partner."],
+  lede: "Creston Biz brings facilities management, office operations and administration, and events management together. One partner to keep your workplace maintained, your organisation running and your events professionally delivered.",
   trust: "Based at NASTP, Lahore Cantt. Deploying across Punjab.",
 } as const;
 
@@ -20,87 +20,92 @@ export const stats: ReadonlyArray<Stat> = [
 ];
 
 export type Service = {
-  readonly id: "office-operations" | "workforce" | "facilities" | "events";
-  readonly kind: "Managed service" | "Staff augmentation" | "Managed events";
+  readonly id: "facilities" | "office-operations" | "events";
+  readonly number: string;
   readonly name: string;
   readonly shortName: string;
+  readonly tagline: string;
   readonly promise: string;
+  readonly objective: string;
+  readonly value: string;
   readonly image: { readonly src: string; readonly alt: string; readonly video?: string };
   readonly scope: ReadonlyArray<string>;
 };
 
-export const services: ReadonlyArray<Service> = [
-  {
-    id: "office-operations",
-    kind: "Managed service",
-    name: "Office Operations Outsourcing",
-    shortName: "Office operations",
-    promise: "We run the day-to-day office so your team does not have to: reception, records, supplies, travel and vendors, with agreed deliverables and one point of accountability.",
-    image: { src: "/images/tiles/desk.jpg", alt: "Two colleagues working together at a bright office desk", video: "/video/tile-desk.mp4" },
-    scope: [
-      "Reception, front office and visitor coordination",
-      "Office opening, closing and daily readiness",
-      "Documentation, records and administrative support",
-      "Meeting rooms, stationery and office supplies",
-      "Travel, logistics and routine movement",
-      "Vendor follow-up and service coordination",
-      "Monthly management reporting and issue trackers",
-      "SOP development and process improvement",
-    ],
-  },
-  {
-    id: "workforce",
-    kind: "Staff augmentation",
-    name: "Workforce Solutions",
-    shortName: "Workforce",
-    promise: "You get the people and the continuity. We handle sourcing, employment paperwork, payroll coordination and the replacement guarantee.",
-    image: { src: "/images/tiles/team.jpg", alt: "A team reviewing work together around a laptop", video: "/video/tile-team.mp4" },
-    scope: [
-      "Workforce planning against a confirmed requirement",
-      "Sourcing, screening and shortlisting",
-      "Client interview and selection support",
-      "Employment and deployment documentation",
-      "Payroll coordination, EOBI and PESSI compliance",
-      "Attendance and timesheet management",
-      "Replacement and backup for agreed roles",
-      "Renewal, scale-up, reduction and close-out",
-    ],
-  },
+export const services = [
   {
     id: "facilities",
-    kind: "Managed service",
+    number: "01",
     name: "Facilities Management",
     shortName: "Facilities",
-    promise: "We manage the physical workplace, from maintenance and cleaning vendors to safety audits, so nobody on your team is chasing a facilities issue.",
+    tagline: "Well-Maintained, Safe & Efficient Workplaces",
+    promise: "Creston manages the day-to-day physical environment of offices, institutions, corporate facilities and other workplaces.",
+    objective: "To keep facilities clean, functional, safe and professionally maintained while allowing the client to focus on its core business.",
+    value: "Keep the workplace maintained.",
     image: { src: "/images/tiles/facade.jpg", alt: "A technician working on the facade of an office building", video: "/video/tile-facade.mp4" },
     scope: [
-      "Preventive and reactive maintenance coordination",
-      "Cleaning, janitorial and pest-control vendors",
-      "Utilities, HVAC and building-systems oversight",
-      "Asset register and inventory management",
-      "Vendor contracts and SLA tracking",
-      "Monthly facilities reporting and cost tracking",
+      "Housekeeping & Cleaning Services",
+      "Horticulture & Landscaping Support",
+      "Electrical & Plumbing Maintenance",
+      "Minor Repairs & Building Maintenance",
+      "Utilities & Facility Support",
+      "Waste Management & Sanitation",
+      "Maintenance Staff Deployment & Supervision",
+      "Vendor & Contractor Coordination",
+      "Facility Inspection & Preventive Maintenance",
+      "Health, Safety & Compliance Support",
+    ],
+  },
+  {
+    id: "office-operations",
+    number: "02",
+    name: "Office Operations & Administration",
+    shortName: "Office operations",
+    tagline: "Smooth Operations, Better Control & Greater Productivity",
+    promise: "Creston provides professional administrative and operational support to organizations that need efficient day-to-day office management.",
+    objective: "To create organized, efficient and professionally managed office operations through people, processes and systems.",
+    value: "Keep the organization running efficiently.",
+    image: { src: "/images/tiles/desk.jpg", alt: "Two colleagues working together at a bright office desk", video: "/video/tile-desk.mp4" },
+    scope: [
+      "Front Office & Reception Support",
+      "Administrative Assistance",
+      "Office Coordination & Supervision",
+      "Documentation & Record Management",
+      "Procurement & Vendor Coordination",
+      "Office Supplies & Inventory Support",
+      "Staff Coordination & Attendance Administration",
+      "SOP Development & Process Improvement",
+      "Meetings & Internal Coordination",
+      "EOBI / PESSI / Service Tax Administrative Support",
+      "Government & Institutional Liaison Support",
     ],
   },
   {
     id: "events",
-    kind: "Managed events",
+    number: "03",
     name: "Events Management",
     shortName: "Events",
-    promise: "From concept to completion. We plan, organise and run the events that carry your name, from a small workshop to an annual dinner.",
+    tagline: "Professional Planning. Seamless Execution. Memorable Experiences.",
+    promise: "Creston plans and executes corporate, institutional and organizational events from concept to completion.",
+    objective: "To deliver well-organized, professional and memorable events while managing the details, vendors and execution on behalf of the client.",
+    value: "Deliver professional experiences and successful events.",
     image: { src: "/images/tiles/events.jpg", alt: "A speaker presenting on stage at a corporate conference", video: "/video/tile-events.mp4" },
     scope: [
-      "Small events: meetings, workshops and seminars",
-      "Corporate events: conferences, product launches and annual dinners",
-      "Social and private parties",
-      "Venue sourcing and decor",
-      "Catering and entertainment management",
-      "Guest lists, invitations and on-site coordination",
-      "Audio, visual and staging vendors",
-      "Post-event reporting and settlement",
+      "Corporate Events & Conferences",
+      "Product Launches",
+      "Seminars & Workshops",
+      "Training Events",
+      "Brand Activations",
+      "Institutional & Government Events",
+      "Venue & Hospitality Coordination",
+      "Stage, Sound & Lighting Coordination",
+      "Branding, Décor & Floral Arrangements",
+      "Photography & Videography Coordination",
+      "Guest Management & Registration",
+      "Complete Event Planning & On-Ground Execution",
     ],
   },
-];
+] as const satisfies ReadonlyArray<Service>;
 
 export type Layer = {
   readonly id: string;
@@ -177,9 +182,9 @@ export const founder = {
 
 export const contactCopy = {
   label: "Get started",
-  heading: "Start with one role. Grow from there.",
+  heading: "Start with one service. Grow from there.",
   lede: "You will get a scope, a transparent rate and a low-risk way to see the model work before committing further.",
-  interests: ["Office Operations Outsourcing", "Workforce Solutions", "Facilities Management", "Events Management", "Not sure yet, I need a recommendation"],
+  interests: [...services.map((service) => service.name), "Not sure yet, I need a recommendation"],
   submit: "Send inquiry",
   pending: "Sending",
   success: { heading: "Inquiry received.", body: "We reply within one working day. If it is urgent, call the number on this page." },

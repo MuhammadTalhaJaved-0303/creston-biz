@@ -4,9 +4,9 @@ export const site = {
   wordmark: ["CRESTON", "BIZ"],
   legalName: "Creston Business Services (Private) Limited",
   description:
-    "Office operations, workforce, facilities and events outsourcing in Lahore. Recruited, deployed and managed against a written service level.",
+    "Facilities management, office operations and administration, and events management in Lahore. Three business functions, one integrated solution.",
   url: "https://crestonbiz.com",
-  footerLine: "Managed office operations, workforce, facilities and events for organisations across Punjab.",
+  footerLine: "Cleaner, Safer & More Productive Workplaces.",
   locale: "en_PK",
 } as const;
 

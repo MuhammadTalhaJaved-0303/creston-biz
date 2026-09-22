@@ -1,23 +1,10 @@
-import { ServiceTile, type TileLayout } from "@/components/sections/services/ServiceTile";
+import { ServiceTile } from "@/components/sections/services/ServiceTile";
 import { Container } from "@/components/ui/Container";
-import { Reveal, RevealItem } from "@/components/ui/Reveal";
+import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { services, type Service } from "@/lib/content";
+import { services } from "@/lib/content";
 
-type Placement = { readonly layout: TileLayout; readonly className: string };
-
-/** Bento placement: 7/5 on the first band, 5/7 on the second. Two columns on tablet, one on phone. */
-const placements: Record<Service["id"], Placement> = {
-  "office-operations": { layout: "band", className: "md:col-span-2 xl:col-span-7 xl:row-span-2" },
-  workforce: { layout: "cornerRight", className: "xl:col-span-5 xl:row-span-2" },
-  facilities: { layout: "cornerLeft", className: "xl:col-span-5 xl:row-span-2" },
-  events: { layout: "band", className: "md:col-span-2 xl:col-span-7 xl:row-span-2" },
-};
-
-/**
- * The four managed functions as a bento: two photo tiles up top,
- * facilities and events below.
- */
+/** Three service pillars in the order supplied in the content brief. */
 export function Services() {
   return (
     <section id="services" className="relative py-[var(--spacing-section)]" aria-labelledby="services-title">
@@ -26,27 +13,31 @@ export function Services() {
           <SectionHeader
             id="services-title"
             label="Services"
-            title={
-              <>
-                Everything your office needs, <span className="text-gradient">under one contract.</span>
-              </>
-            }
-            lede="Four managed functions, each backed by the same reporting and service-level standard."
+            title={<>Everything your office needs, <span className="text-gradient">under one contract.</span></>}
+            lede="Three business functions, each backed by professional coordination and one accountable partner."
           />
         </Reveal>
-
-        <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-2 xl:auto-rows-[minmax(15rem,auto)] xl:grid-cols-12">
-          {services.map((service, index) => {
-            const placement = placements[service.id];
-            return (
-              <Reveal key={service.id} staggered delay={index * 0.08} className={placement.className}>
-                <RevealItem className="h-full">
-                  <ServiceTile service={service} layout={placement.layout} />
-                </RevealItem>
-              </Reveal>
-            );
-          })}
+        <div className="mt-12 grid gap-6 md:mt-16 md:gap-8">
+          {services.map((service) => (
+            <Reveal key={service.id}>
+              <ServiceTile service={service} />
+            </Reveal>
+          ))}
         </div>
+        <Reveal>
+          <div className="mt-10 rounded-[var(--radius-card)] bg-navy p-6 text-white md:p-10">
+            <p className="text-caption font-semibold uppercase tracking-[0.12em] text-white/70">Creston&apos;s value proposition</p>
+            <h3 className="text-h3 mt-3 max-w-[40ch]">One Partner. Three Business Functions. One Integrated Solution.</h3>
+            <div className="mt-8 grid gap-6 md:grid-cols-3">
+              {services.map((service) => (
+                <div key={service.id} className="border-t border-white/25 pt-4">
+                  <h4 className="font-semibold">{service.name}</h4>
+                  <p className="text-small mt-2 text-white/75">{service.value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </Container>
     </section>
   );
