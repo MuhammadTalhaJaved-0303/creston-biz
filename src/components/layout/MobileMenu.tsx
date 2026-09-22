@@ -76,7 +76,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between">
-              <Logo size="sm" />
+              <Logo />
               <button
                 type="button"
                 onClick={onClose}
