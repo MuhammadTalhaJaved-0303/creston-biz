@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { CircleAlert, LoaderCircle } from "lucide-react";
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
 import { submitInquiry } from "@/app/actions/inquiry";
 import { FormField } from "@/components/sections/contact/FormField";
 import { InquirySuccess } from "@/components/sections/contact/InquirySuccess";
@@ -40,6 +40,13 @@ export function InquiryForm() {
   const reduce = useReducedMotion();
   const [state, formAction, pending] = useActionState(submitInquiry, idle);
   const [dismissed, setDismissed] = useState<InquiryState | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    if (state.status === "error" && state.errors) {
+      formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus();
+    }
+  }, [state]);
 
   const showSuccess = state.status === "success" && state !== dismissed;
   const errors = state.status === "error" ? (state.errors ?? noErrors) : noErrors;
@@ -63,6 +70,7 @@ export function InquiryForm() {
       ) : (
         <motion.form
           key="form"
+          ref={formRef}
           action={formAction}
           noValidate
           className="flex h-full flex-col"

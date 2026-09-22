@@ -1,6 +1,7 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useLenis } from "lenis/react";
 import { X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
@@ -20,6 +21,8 @@ const sheet = {
 /** Card-style menu that drops from the header on narrow screens. */
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
+  const lenis = useLenis();
 
   /* Escape closes; Tab cycles inside the sheet; focus returns to the opener. */
   useEffect(() => {
@@ -44,13 +47,21 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
       }
     };
     document.addEventListener("keydown", onKey);
-    document.documentElement.classList.add("lenis-stopped");
+    const previousOverflow = document.documentElement.style.overflow;
+    document.documentElement.style.overflow = "hidden";
+    lenis?.stop();
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.documentElement.classList.remove("lenis-stopped");
+      document.documentElement.style.overflow = previousOverflow;
+      lenis?.start();
       opener?.focus();
     };
-  }, [open, onClose]);
+  }, [open, onClose, lenis]);
+
+  const navigate = () => {
+    lenis?.start();
+    onClose();
+  };
 
   return (
     <AnimatePresence>
@@ -61,6 +72,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          transition={reduce ? { duration: 0 } : undefined}
           onClick={onClose}
         >
           <motion.div
@@ -68,8 +80,9 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             role="dialog"
             aria-modal="true"
             aria-label="Site navigation"
-            className="card p-5 mx-auto max-w-md"
-            variants={sheet}
+            className="card p-5 mx-auto max-w-md max-h-[calc(100dvh-1.5rem)] overflow-y-auto overscroll-contain"
+            data-lenis-prevent
+            variants={reduce ? undefined : sheet}
             initial="hidden"
             animate="show"
             exit="exit"
@@ -81,7 +94,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                 type="button"
                 onClick={onClose}
                 aria-label="Close menu"
-                className="grid size-10 place-items-center rounded-full hover:bg-surface-2"
+                className="grid size-11 place-items-center rounded-full hover:bg-surface-2"
               >
                 <X className="size-5" />
               </button>
@@ -91,7 +104,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
                 <Link
                   key={link.href}
                   href={link.href}
-                  onClick={onClose}
+                  onClick={navigate}
                   className="rounded-xl px-3 py-3 text-lg font-semibold hover:bg-surface-2"
                 >
                   {link.label}
@@ -99,7 +112,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
               ))}
             </nav>
             <div className="mt-4 flex flex-col gap-3">
-              <ButtonLink href={primaryCta.href} onClick={onClose} size="lg" arrow className="w-full">
+              <ButtonLink href={primaryCta.href} onClick={navigate} size="lg" arrow className="w-full">
                 {primaryCta.label}
               </ButtonLink>
               <a href={contact.phoneHref} className="text-center text-small text-ink-2">

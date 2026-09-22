@@ -11,6 +11,7 @@ const VISIBLE_COUNT = 4;
 
 type ScopeChipsProps = {
   readonly id: string;
+  readonly serviceName: string;
   readonly items: ReadonlyArray<string>;
 };
 
@@ -26,7 +27,7 @@ function Chip({ label }: { readonly label: string }) {
  * The first four scope items as chips, with the rest folded behind a
  * "See full scope" button that expands them inline.
  */
-export function ScopeChips({ id, items }: ScopeChipsProps) {
+export function ScopeChips({ id, serviceName, items }: ScopeChipsProps) {
   const reduce = useReducedMotion();
   const [open, setOpen] = useState(false);
   const visible = items.slice(0, VISIBLE_COUNT);
@@ -66,10 +67,11 @@ export function ScopeChips({ id, items }: ScopeChipsProps) {
           variant="ghost"
           className="mt-4 -ml-5"
           aria-expanded={open}
-          aria-controls={panelId}
+          aria-controls={open ? panelId : undefined}
+          aria-label={`${open ? "Show fewer services" : `See all ${items.length} services`} for ${serviceName}`}
           onClick={() => setOpen((value) => !value)}
         >
-          {open ? "Hide full scope" : "See full scope"}
+          {open ? "Show fewer services" : `See all ${items.length} services`}
           <ChevronDown
             aria-hidden="true"
             className={cn("size-4 transition-transform duration-300 ease-[var(--ease-out)]", open && "rotate-180")}

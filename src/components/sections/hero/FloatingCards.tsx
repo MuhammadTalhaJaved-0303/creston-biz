@@ -30,7 +30,7 @@ export function FloatingCards() {
   return (
     <div ref={ref} className="relative h-[31rem] lg:h-[35rem]" aria-hidden="true">
       {/* Report card */}
-      <motion.div style={{ y: y1 }} className="absolute left-0 top-6 w-[19.5rem] sm:w-[22rem]">
+      <motion.div style={{ y: y1 }} className="absolute left-0 top-6 w-[19.5rem] max-w-full sm:w-[22rem]">
         <motion.div {...enter(0.35)} className="glass rounded-[1.35rem] p-5 animate-float-slow">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2.5">
@@ -70,7 +70,7 @@ export function FloatingCards() {
       </motion.div>
 
       {/* Team card */}
-      <motion.div style={{ y: y2 }} className="absolute right-0 top-[17.5rem] w-[17rem] sm:w-[19rem] lg:top-[19.5rem]">
+      <motion.div style={{ y: y2 }} className="absolute right-0 top-[17.5rem] w-[17rem] max-w-full sm:w-[19rem] lg:top-[19.5rem]">
         <motion.div {...enter(0.55)} className="glass rounded-[1.35rem] p-5 animate-float">
           <div className="flex items-center gap-2.5">
             <span className="grid size-9 place-items-center rounded-xl bg-navy text-white">
@@ -105,9 +105,9 @@ export function FloatingCards() {
       </motion.div>
 
       {/* Guarantee chip */}
-      <motion.div style={{ y: y3 }} className="absolute left-4 top-[26.5rem] sm:left-8 lg:top-[30rem]">
+      <motion.div style={{ y: y3 }} className="absolute left-0 top-[26.5rem] max-w-full sm:left-8 lg:top-[30rem]">
         <motion.div {...enter(0.75)} className="glass inline-flex items-center gap-2.5 rounded-full py-2.5 pl-3 pr-5 animate-float-slow">
-          <CheckCircle2 className="size-5 text-green" />
+          <CheckCircle2 className="size-5 shrink-0 text-green" />
           <span className="text-[0.9rem] font-semibold">Replacement guarantee active</span>
         </motion.div>
       </motion.div>

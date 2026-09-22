@@ -42,16 +42,16 @@ export function StackScene() {
   const active = scrubbed ? scrollActive : pickedActive;
 
   return (
-    <div ref={ref} className="lg:h-[340vh]">
-      <div className="py-[var(--spacing-section)] lg:sticky lg:top-0 lg:flex lg:h-screen lg:items-center lg:py-0 lg:pt-20">
+    <div ref={ref} className={scrubbed ? "lg:h-[340vh]" : undefined}>
+      <div className={scrubbed ? "py-[var(--spacing-section)] lg:sticky lg:top-0 lg:flex lg:h-screen lg:items-center lg:py-0 lg:pt-20" : "py-[var(--spacing-section)]"}>
         <Container>
           <div className="grid grid-cols-12 items-center gap-x-6 gap-y-12">
             <div className="col-span-12 lg:col-span-5">
               <SectionHeader label={stack.label} title={stack.heading} lede={stack.lede} />
-              <p className="mt-4 hidden items-center gap-2 text-small font-medium text-blue lg:inline-flex">
+              {scrubbed ? <p className="mt-4 hidden items-center gap-2 text-small font-medium text-blue lg:inline-flex">
                 <MousePointer2 aria-hidden="true" className="size-4" />
                 {stack.hint}
-              </p>
+              </p> : null}
               <LayerList layers={stack.layers} active={active} onSelect={scrubbed ? undefined : setPickedActive} />
             </div>
 
@@ -62,7 +62,7 @@ export function StackScene() {
                   className="absolute left-1/2 top-[64%] h-24 w-[70%] -translate-x-1/2 rounded-[100%] bg-[radial-gradient(closest-side,rgba(11,28,51,0.16),transparent)] blur-md"
                 />
                 <div
-                  className="absolute left-[36%] top-[60%] origin-center scale-[0.44] sm:left-1/2 sm:scale-[0.76] lg:scale-100 lg:top-[62%]"
+                  className="absolute left-[36%] top-[60%] origin-center scale-[0.44] max-[374px]:left-[22%] max-[374px]:scale-[0.34] sm:left-1/2 sm:scale-[0.76] lg:scale-100 lg:top-[62%]"
                   style={{
                     width: PLATE.w,
                     height: PLATE.h,

@@ -7,7 +7,7 @@ import { TileMedia } from "@/components/sections/services/TileMedia";
 import type { Service } from "@/lib/content";
 
 const focal: Record<Service["id"], string> = {
-  "office-operations": "50% 45%",
+  "office-operations": "22% 45%",
   facilities: "50% 58%",
   events: "50% 40%",
 };
@@ -60,7 +60,7 @@ export function ServiceTile({ service }: { readonly service: Service }) {
         <p className="text-body mt-2 text-ink-2">{service.promise}</p>
         <div className="mt-6">
           <p className="mb-3 text-caption font-bold uppercase tracking-[0.1em] text-ink-3">Core services</p>
-          <ScopeChips id={service.id} items={service.scope} />
+          <ScopeChips id={service.id} serviceName={service.name} items={service.scope} />
         </div>
         <div className="mt-5 border-t border-line pt-5">
           <p className="text-caption font-bold uppercase tracking-[0.1em] text-ink-3">Our objective</p>

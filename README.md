@@ -28,6 +28,12 @@ SHOT_BASE=http://localhost:3000/ node scripts/shot.mjs walk .shots/walk.png 390 
 SHOT_BASE=http://localhost:3000/ node scripts/scrub.mjs "#stack" .shots/stack 1440 900  # pinned exploded view
 ```
 
+UI regression checks against a running local server (checks responsive layouts, service expansion, menu keyboard navigation, and invalid-form focus):
+
+```bash
+UI_BASE_URL=http://localhost:3000 node scripts/check-ui.mjs
+```
+
 ## Content
 
 Every word on the page comes from `src/lib/content.ts` and `src/lib/site.ts`. Edit copy there;
