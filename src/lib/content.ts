@@ -6,7 +6,7 @@
 export const hero = {
   label: "Managed office services in Lahore",
   headline: ["Three functions.", "One accountable partner."],
-  lede: "Creston Biz brings facilities management, office operations and administration, and events management together. One partner to keep your workplace maintained, your organisation running and your events professionally delivered.",
+  lede: "Creston Business Solution brings facilities management, office operations and administration, and events management together. One partner to keep your workplace maintained, your organisation running and your events professionally delivered.",
   trust: "Based at NASTP, Lahore Cantt. Deploying across Punjab.",
 } as const;
 
