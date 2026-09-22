@@ -1,5 +1,4 @@
 import { UsersRound } from "lucide-react";
-import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -53,10 +52,6 @@ export function Leadership() {
                   <p className="text-body max-w-[62ch] text-white/75">{paragraph}</p>
                 </RevealItem>
               ))}
-
-              <RevealItem>
-                <Link href="/cards/hasan-ghazanfar" className="inline-flex min-h-11 items-center text-small font-semibold text-cyan underline underline-offset-4">View business card</Link>
-              </RevealItem>
 
               <RevealItem className="mt-2">
                 <ExperienceRows />

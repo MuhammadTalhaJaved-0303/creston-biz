@@ -42,5 +42,5 @@ next-env.d.ts
 .playwright-mcp
 .shots
 
-# generated business-card exports (npm run cards:export)
+# generated business-card exports, kept out of the repo
 /artifacts
