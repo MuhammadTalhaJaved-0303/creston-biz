@@ -260,3 +260,84 @@ html.lenis, html.lenis body { height: auto; }
   html { scroll-behavior: auto; }
   .animate-float, .animate-float-slow { animation: none; }
 }
+
+/* ------------------------------------------------------------------ */
+/*  Section grounds. Tinted, layered washes so the page is not white    */
+/*  from top to bottom; each ground is one gradient, no images.         */
+/* ------------------------------------------------------------------ */
+@utility bg-ground-services {
+  background:
+    radial-gradient(48rem 30rem at 0% 0%, rgba(46, 107, 255, 0.16), transparent 60%),
+    radial-gradient(44rem 28rem at 100% 40%, rgba(43, 196, 236, 0.18), transparent 60%),
+    linear-gradient(180deg, #f6f8fc 0%, #e9f0ff 30%, #e6f3fb 75%, #eef2fb 100%);
+}
+@utility bg-ground-stack {
+  background:
+    radial-gradient(56rem 30rem at 85% 0%, rgba(43, 196, 236, 0.22), transparent 60%),
+    radial-gradient(48rem 30rem at 0% 100%, rgba(46, 107, 255, 0.2), transparent 60%),
+    linear-gradient(180deg, #eef2fb 0%, #e6edfb 100%);
+}
+@utility bg-ground-process {
+  background:
+    radial-gradient(40rem 24rem at 100% 0%, rgba(124, 107, 255, 0.12), transparent 60%),
+    linear-gradient(180deg, #f3f6fc 0%, #e9eff9 100%);
+}
+@utility bg-ground-industries {
+  background:
+    radial-gradient(52rem 28rem at 8% 0%, rgba(124, 107, 255, 0.18), transparent 60%),
+    radial-gradient(46rem 28rem at 96% 100%, rgba(43, 196, 236, 0.2), transparent 60%),
+    linear-gradient(180deg, #edeffb 0%, #f6f8fc 100%);
+}
+@utility bg-band {
+  background: linear-gradient(100deg, #0a2647 0%, #1f55d6 48%, #2bc4ec 100%);
+}
+
+/* Blurred colour orbs that drift slowly behind content. */
+@utility orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(48px);
+  pointer-events: none;
+}
+
+/* Cursor-tracking highlight and a light tilt for interactive cards. */
+@utility spotlight {
+  position: relative;
+  transform: perspective(1200px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0px));
+  transition: transform 0.6s var(--ease-out), box-shadow 0.6s var(--ease-out), border-color 0.6s var(--ease-out);
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s var(--ease-out);
+    background: radial-gradient(26rem circle at var(--mx, 50%) var(--my, 50%), rgba(46, 107, 255, 0.16), rgba(43, 196, 236, 0.06) 40%, transparent 65%);
+  }
+  &:hover {
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--color-line-2);
+  }
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+/* Continuous marquee track; the track holds two copies of its content. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 38s linear infinite;
+}
+.marquee:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee { animation: none; }
+  .spotlight { transform: none; }
+}

@@ -32,10 +32,12 @@ type RevealProps = {
   readonly staggered?: boolean;
   readonly delay?: number;
   readonly as?: "div" | "section" | "ul" | "li";
+  /** Share of the block that must be visible before it enters; lower it for very tall blocks. */
+  readonly amount?: number;
 };
 
 /** One-time entrance when the block scrolls into view. */
-export function Reveal({ children, className, staggered = false, delay = 0.05, as = "div" }: RevealProps) {
+export function Reveal({ children, className, staggered = false, delay = 0.05, as = "div", amount = viewportOnce.amount }: RevealProps) {
   const reduce = useReducedMotion() === true;
   const Tag = motion[as];
   return (
@@ -45,7 +47,7 @@ export function Reveal({ children, className, staggered = false, delay = 0.05, a
       custom={reduce}
       initial="hidden"
       whileInView="show"
-      viewport={viewportOnce}
+      viewport={{ ...viewportOnce, amount }}
     >
       {children}
     </Tag>

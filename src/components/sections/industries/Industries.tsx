@@ -2,6 +2,7 @@ import Image from "next/image";
 import { MapPin } from "lucide-react";
 import { IndustryCard } from "@/components/sections/industries/IndustryCard";
 import { Container } from "@/components/ui/Container";
+import { Orbs } from "@/components/ui/Orbs";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { industries } from "@/lib/content";
@@ -13,6 +14,11 @@ const copy = {
   photoCaption: "On site across Punjab",
   note: "Priority focus marks where new engagements start first.",
 } as const;
+
+const orbs = [
+  "left-[-10rem] top-[30%] size-[30rem] bg-violet/20",
+  "right-[-8rem] top-[-4rem] size-[26rem] bg-cyan/25",
+] as const;
 
 /** Columns on the widest layout; the entrance cascade restarts on each row. */
 const columns = 3;
@@ -26,8 +32,9 @@ const cascade = 0.1;
  */
 export function Industries() {
   return (
-    <section id="industries" aria-labelledby="industries-heading" className="bg-mesh-soft py-[var(--spacing-section)]">
-      <Container>
+    <section id="industries" aria-labelledby="industries-heading" className="bg-ground-industries relative overflow-hidden py-[var(--spacing-section)]">
+      <Orbs orbs={orbs} />
+      <Container className="relative">
         <div className="grid grid-cols-12 items-center gap-x-6 gap-y-10">
           <Reveal className="col-span-12 lg:col-span-7">
             <SectionHeader

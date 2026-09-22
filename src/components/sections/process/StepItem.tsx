@@ -1,10 +1,13 @@
 "use client";
 
-import { motion, useReducedMotion, useTransform, type MotionValue } from "motion/react";
+import { motion, useInView, useMotionValueEvent, useReducedMotion, useTransform, type MotionValue } from "motion/react";
+import { useRef, useState } from "react";
 import { closingIcons, fallbackClosingIcon } from "@/components/sections/process/stepIcons";
+import { LottieIcon } from "@/components/ui/LottieIcon";
 import { cn } from "@/lib/cn";
 import type { Step } from "@/lib/content";
 import { rise } from "@/lib/motion";
+import { stepAnimations } from "@/lottie";
 
 type StepItemProps = {
   readonly step: Step;
@@ -26,7 +29,8 @@ const gradientV = "bg-[linear-gradient(180deg,#2e6bff,#2bc4ec)]";
 
 /**
  * One stage: a numbered node on the rail, the segment that draws towards the
- * next node, and the card with the stage's title, summary and closing document.
+ * next node, and the card with an animated icon, the stage's title, summary
+ * and closing document.
  * Vertical timeline on phones, three-column rows on tablets, one rail at xl.
  */
 export function StepItem({ step, progress, start, end, hasSegment, endsTabletRow }: StepItemProps) {
@@ -34,6 +38,16 @@ export function StepItem({ step, progress, start, end, hasSegment, endsTabletRow
   const lit = useTransform(progress, [start, start + NODE_RAMP], [0, 1]);
   const drawn = useTransform(progress, [start, end], [0, 1]);
   const Icon = closingIcons[step.n] ?? fallbackClosingIcon;
+  const animation = stepAnimations[step.n];
+
+  /* The icon assembles itself when the rail lights this node, or once the card itself is well in view. */
+  const cardRef = useRef<HTMLDivElement>(null);
+  const cardInView = useInView(cardRef, { once: true, amount: 0.7 });
+  const [litPlay, setLitPlay] = useState(false);
+  useMotionValueEvent(lit, "change", (value) => {
+    if (value > 0.5) setLitPlay(true);
+  });
+  const play = litPlay || cardInView;
 
   const verticalRail = hasSegment ? "md:hidden" : "hidden";
   const horizontalRail = !hasSegment ? "hidden" : endsTabletRow ? "hidden xl:block" : "hidden md:block";
@@ -60,7 +74,12 @@ export function StepItem({ step, progress, start, end, hasSegment, endsTabletRow
         <span className="relative">{step.n}</span>
       </span>
 
-      <div className="card card-hover flex min-w-0 flex-1 flex-col p-5">
+      <div ref={cardRef} className="card card-hover flex min-w-0 flex-1 flex-col p-5">
+        {animation ? (
+          <span className="mb-4 grid size-16 place-items-center rounded-2xl bg-[linear-gradient(135deg,#eef2ff,#e4f7fc)]">
+            <LottieIcon data={animation} play={play} className="size-12" />
+          </span>
+        ) : null}
         <h3 className="text-h4 text-ink">{step.title}</h3>
         <p className="mt-2 text-small text-ink-2">{step.body}</p>
         <div className="mt-auto pt-5">

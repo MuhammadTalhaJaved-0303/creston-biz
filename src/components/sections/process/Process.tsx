@@ -19,7 +19,7 @@ export function Process() {
     <section
       id="process"
       aria-labelledby="process-title"
-      className="relative overflow-hidden border-y border-line bg-surface py-[var(--spacing-section)]"
+      className="bg-ground-process relative overflow-hidden border-b border-line py-[var(--spacing-section)]"
     >
       <div
         aria-hidden="true"

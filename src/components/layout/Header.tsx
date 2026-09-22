@@ -5,6 +5,7 @@ import { Menu } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 import { MobileMenu } from "@/components/layout/MobileMenu";
+import { ScrollProgress } from "@/components/layout/ScrollProgress";
 import { ButtonLink } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
 import { cn } from "@/lib/cn";
@@ -27,6 +28,7 @@ export function Header() {
 
   return (
     <>
+      <ScrollProgress />
       <motion.header className="fixed inset-x-0 top-0 z-50" initial={false} animate={{ paddingTop: scrolled ? 10 : 0 }}>
         <div className="mx-auto max-w-[var(--container-site)] px-[var(--spacing-gutter)]">
           <div

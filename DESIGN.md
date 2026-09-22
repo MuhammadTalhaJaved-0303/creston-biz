@@ -168,3 +168,23 @@ centred panel: green check chip, `h3 {contactCopy.success.heading}`, body, and a
 ghost button. Field errors under the field in `text-caption text-[#d92d20]` with
 `aria-describedby`/`aria-invalid`. `noValidate` on the form.
 Files: `Contact.tsx`, `ContactDetails.tsx`, `InquiryForm.tsx` (client), `FormField.tsx`, `InquirySuccess.tsx`.
+
+## 12. v2.1 additions (2026-09-22): colour, motion, Lottie, founding members
+
+- Grounds: sections no longer sit on plain white. `bg-ground-services`, `bg-ground-stack`,
+  `bg-ground-process` and `bg-ground-industries` are single-gradient tinted washes; `bg-band` is
+  the navy-to-cyan gradient used by the value ribbon under the services bento. `<Orbs>` drops
+  blurred colour orbs (`orb` utility) behind a section; keep two or three per section.
+- Interaction: `useSpotlight()` plus the `spotlight` utility give a card a cursor-tracking
+  highlight and a 3 degree tilt (mouse only, off under reduced motion). Used on service tiles
+  and industry cards; do not stack it with `card-hover`.
+- Motion: `<WordReveal>` (via `<SectionHeader>`) rises heading words in one after another;
+  headings are tokenised on the server by `headingTokens()` so the client hydrates identically.
+  `<ScrollProgress>` draws the gradient reading line at the top of the viewport. The hero
+  backdrop parallaxes with scroll. `<Reveal amount>` lowers the visibility threshold for tall
+  blocks.
+- Lottie: `scripts/make-lottie.mjs` generates the brand-coloured icons in `src/lottie/`
+  (six process steps, one success mark). `<LottieIcon>` plays them once when asked and again on
+  hover, through `lottie-react`'s light SVG engine, client-only. Regenerate rather than hand-edit.
+- Leadership: `<FoundingMembers>` lists `foundingMembers` from `content.ts` under the founder.
+  Portraits live in `public/images/founders/` as 720x900 JPGs.

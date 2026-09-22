@@ -1,5 +1,7 @@
 import { ServiceTile, type TileLayout } from "@/components/sections/services/ServiceTile";
+import { ValueRibbon } from "@/components/sections/services/ValueRibbon";
 import { Container } from "@/components/ui/Container";
+import { Orbs } from "@/components/ui/Orbs";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { services, type Service } from "@/lib/content";
@@ -17,11 +19,18 @@ const placements: Record<Service["id"], Placement> = {
   events: { layout: "cornerLeft", className: "xl:col-span-5" },
 };
 
-/** The three service pillars as a bento, followed by the value proposition band. */
+const orbs = [
+  "left-[-8rem] top-[6%] size-[28rem] bg-blue/25",
+  "right-[-10rem] top-[38%] size-[32rem] bg-cyan/25",
+  "left-[30%] bottom-[18%] size-[22rem] bg-violet/20",
+] as const;
+
+/** The three service pillars as a bento on a tinted ground, closed by the value ribbon. */
 export function Services() {
   return (
-    <section id="services" className="relative py-[var(--spacing-section)]" aria-labelledby="services-title">
-      <Container>
+    <section id="services" className="bg-ground-services relative overflow-hidden pt-[var(--spacing-section)]" aria-labelledby="services-title">
+      <Orbs orbs={orbs} />
+      <Container className="relative">
         <Reveal>
           <SectionHeader
             id="services-title"
@@ -39,7 +48,7 @@ export function Services() {
           {services.map((service, index) => {
             const placement = placements[service.id];
             return (
-              <Reveal key={service.id} staggered delay={index * 0.08} className={placement.className}>
+              <Reveal key={service.id} staggered delay={index * 0.08} amount={0.1} className={placement.className}>
                 <RevealItem className="h-full">
                   <ServiceTile service={service} layout={placement.layout} />
                 </RevealItem>
@@ -47,22 +56,9 @@ export function Services() {
             );
           })}
         </div>
-
-        <Reveal>
-          <div className="mt-10 rounded-[var(--radius-card)] bg-navy p-6 text-white md:p-10">
-            <p className="text-caption font-semibold uppercase tracking-[0.12em] text-white/70">Creston&apos;s value proposition</p>
-            <h3 className="text-h3 mt-3 max-w-[40ch]">One Partner. Three Business Functions. One Integrated Solution.</h3>
-            <div className="mt-8 grid gap-6 md:grid-cols-3">
-              {services.map((service) => (
-                <div key={service.id} className="border-t border-white/25 pt-4">
-                  <h4 className="font-semibold">{service.name}</h4>
-                  <p className="text-small mt-2 text-white/75">{service.value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Reveal>
       </Container>
+
+      <ValueRibbon />
     </section>
   );
 }

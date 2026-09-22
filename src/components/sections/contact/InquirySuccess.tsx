@@ -1,10 +1,12 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import { Check, RotateCcw } from "lucide-react";
+import { RotateCcw } from "lucide-react";
+import { LottieIcon } from "@/components/ui/LottieIcon";
 import { Button } from "@/components/ui/Button";
 import { contactCopy } from "@/lib/content";
 import { ease } from "@/lib/motion";
+import { successAnimation } from "@/lottie";
 
 type InquirySuccessProps = {
   readonly onReset: () => void;
@@ -26,9 +28,9 @@ export function InquirySuccess({ onReset }: InquirySuccessProps) {
         initial={{ scale: 0.6, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={pop}
-        className="grid size-[4.5rem] place-items-center rounded-full bg-[linear-gradient(135deg,#17b26a,#2bc4ec)] text-white shadow-[0_18px_40px_-14px_rgba(23,178,106,0.55)]"
+        className="grid size-28 place-items-center rounded-full bg-surface-2"
       >
-        <Check aria-hidden="true" className="size-8" strokeWidth={2.25} />
+        <LottieIcon data={successAnimation} play className="size-24" />
       </motion.span>
 
       <motion.h3 className="text-h3 mt-7 text-ink" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={fade(0.2)}>

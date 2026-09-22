@@ -180,6 +180,51 @@ export const founder = {
   teamNote: "The delivery team grows with each engagement. New team members are introduced here as they join.",
 } as const;
 
+export type FoundingMember = {
+  readonly id: string;
+  readonly name: string;
+  readonly role: string;
+  readonly photo: string;
+  readonly summary: string;
+  readonly bio: string;
+};
+
+/** The two founding members shown alongside the founder, in the order supplied. */
+export const foundingMembers: ReadonlyArray<FoundingMember> = [
+  {
+    id: "ali-nauman-gilani",
+    name: "Syed Ali Nauman Gilani",
+    role: "Founding Member and Director",
+    photo: "/images/founders/ali-nauman-gilani.jpg",
+    summary: "Award-winning entrepreneur, Founder and CEO of Skill2Success and Founder of AIVICO Tech, with a strong focus on technology, innovation, education and business development.",
+    bio: "As a founding member and director of Creston Business Services, he brings an entrepreneurial and technology-driven perspective to the organisation, supporting strategic growth, institutional partnerships and the development of innovative business solutions.",
+  },
+  {
+    id: "zarmina-sanam",
+    name: "Zarmina Sanam",
+    role: "Founding Member and Managing Director",
+    photo: "/images/founders/zarmina-sanam.jpg",
+    summary: "Award-winning entrepreneur, business growth professional, corporate trainer and startup mentor with 18+ years of experience across telecom, fintech, social learning and edtech.",
+    bio: "Her expertise spans business development, corporate training, entrepreneurship, technology and strategic partnerships. At Creston Business Services she contributes to business growth, corporate events, conferences, workshops, training programmes, client engagement and strategic partnerships, complementing Creston's integrated facilities, events and workplace operations model.",
+  },
+];
+
+/** Outcomes that scroll through the value ribbon under the services bento. */
+export const ribbon = {
+  heading: "One Partner. Three Business Functions. One Integrated Solution.",
+  outcomes: [
+    "Cleaner workplaces",
+    "Safer sites",
+    "Documented payroll",
+    "Monthly reporting",
+    "Accountable vendors",
+    "One contract",
+    "Events delivered",
+    "Compliance handled",
+    "Front office covered",
+  ],
+} as const;
+
 export const contactCopy = {
   label: "Get started",
   heading: "Start with one service. Grow from there.",

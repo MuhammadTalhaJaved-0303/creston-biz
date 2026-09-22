@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { ScopeChips } from "@/components/sections/services/ScopeChips";
 import { TileMedia } from "@/components/sections/services/TileMedia";
 import type { Service } from "@/lib/content";
+import { useSpotlight } from "@/lib/useSpotlight";
 
 /**
  * band: photo across the top on wide screens (photo left on tablet).
@@ -56,12 +57,13 @@ const layoutClasses: Record<TileLayout, LayoutClasses> = {
 
 type ServiceTileProps = { readonly service: Service; readonly layout: TileLayout };
 
-/** One service pillar: photo (video loop on hover), number badge, name, tagline, promise, scope and objective. */
+/** One service pillar: photo (video loop on hover), cursor spotlight and tilt, number badge, name, tagline, promise, scope and objective. */
 export function ServiceTile({ service, layout }: ServiceTileProps) {
   const reduce = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const classes = layoutClasses[layout];
+  const { ref: spotlightRef, onPointerMove: onSpotlightMove, onPointerLeave: onSpotlightLeave } = useSpotlight<HTMLElement>();
 
   const startLoop = () => {
     const video = videoRef.current;
@@ -75,12 +77,15 @@ export function ServiceTile({ service, layout }: ServiceTileProps) {
   const stopLoop = () => {
     videoRef.current?.pause();
     setPlaying(false);
+    onSpotlightLeave();
   };
 
   return (
     <article
-      className="card card-hover group relative flex h-full flex-col overflow-hidden"
+      ref={spotlightRef}
+      className="card spotlight group flex h-full flex-col overflow-hidden"
       onPointerEnter={startLoop}
+      onPointerMove={onSpotlightMove}
       onPointerLeave={stopLoop}
       aria-labelledby={`${service.id}-title`}
     >

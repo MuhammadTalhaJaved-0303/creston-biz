@@ -1,6 +1,9 @@
+"use client";
+
 import { industryIcons } from "@/components/sections/industries/icons";
 import { cn } from "@/lib/cn";
 import type { Industry, Priority } from "@/lib/content";
+import { useSpotlight } from "@/lib/useSpotlight";
 
 const gradient = "bg-[linear-gradient(135deg,#2e6bff,#2bc4ec)]";
 const chipGradient = "bg-[linear-gradient(135deg,#1f55d6,#0a2647)]";
@@ -43,16 +46,21 @@ function FeaturedRing() {
 
 /**
  * One industry tile: icon chip, priority chip, name and the need we meet.
- * Hover lifts the card (shared `card-hover`), nudges the icon and draws a
- * gradient hairline along the bottom edge. Pure CSS, so this stays a
- * server component.
+ * The cursor lights the card and tilts it slightly (spotlight), the icon
+ * nudges up and a gradient hairline draws along the bottom edge.
  */
 export function IndustryCard({ industry }: { readonly industry: Industry }) {
   const Icon = industryIcons[industry.icon];
   const style = priorityStyles[industry.priority];
+  const { ref: spotlightRef, onPointerMove, onPointerLeave } = useSpotlight<HTMLDivElement>();
 
   return (
-    <div className={cn("group card card-hover relative flex h-full flex-col p-7", style.featured && "border-transparent hover:border-transparent")}>
+    <div
+      ref={spotlightRef}
+      onPointerMove={onPointerMove}
+      onPointerLeave={onPointerLeave}
+      className={cn("group card spotlight flex h-full flex-col p-7", style.featured && "border-transparent hover:border-transparent")}
+    >
       {/* Clipped decorative layer: corner glow and the hover hairline. */}
       <span aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]">
         {style.featured ? (

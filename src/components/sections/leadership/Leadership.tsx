@@ -3,12 +3,14 @@ import { Container } from "@/components/ui/Container";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ExperienceRows } from "@/components/sections/leadership/ExperienceRows";
+import { FoundingMembers } from "@/components/sections/leadership/FoundingMembers";
 import { FounderCard } from "@/components/sections/leadership/FounderCard";
 import { founder } from "@/lib/content";
 
 /**
  * Navy band introducing the founder: a tilted portrait with a caption card
- * on the left, the bio and the organisations he has worked with on the right.
+ * on the left, the bio and the organisations he has worked with on the right,
+ * then the two founding members.
  */
 export function Leadership() {
   return (
@@ -64,6 +66,8 @@ export function Leadership() {
             </Reveal>
           </div>
         </div>
+
+        <FoundingMembers />
       </Container>
     </section>
   );
