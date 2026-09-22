@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Reveal, RevealItem } from "@/components/ui/Reveal";
 import { foundingMembers } from "@/lib/content";
 
@@ -41,6 +42,7 @@ export function FoundingMembers() {
                 <p className="text-small mt-1 font-medium text-cyan">{member.role}</p>
                 <p className="text-small mt-4 text-white/80">{member.summary}</p>
                 <p className="text-small mt-3 text-white/70">{member.bio}</p>
+                <Link href={`/cards/${member.id}`} className="mt-5 inline-flex min-h-11 items-center text-small font-semibold text-cyan underline underline-offset-4">View business card</Link>
               </div>
             </article>
           </RevealItem>

@@ -39,6 +39,27 @@ UI_BASE_URL=http://localhost:3000 node scripts/check-ui.mjs
 Every word on the page comes from `src/lib/content.ts` and `src/lib/site.ts`. Edit copy there;
 components are presentational. House style: no italics, no dashes used as punctuation.
 
+## Digital business cards
+
+Open `/cards` for the three leadership cards. Profiles reuse the website content; stable
+slugs, structured names and available personal social links live in `src/lib/business-cards.ts`.
+Phone and email are labeled as shared Creston Biz office details. Confirm personal details
+before replacing them. The founder's card uses the website name, Syed Hasan Ghazanfar.
+
+Each card offers a `.vcf` contact download, a website QR, and a contact-only QR. Website QRs
+use `site.url` and require these routes to be deployed there. Contact-only QRs encode basic
+contact details directly and work offline; photos and biographies are available in the digital
+card and full contact file. There is no third-party QR service or expiry timer.
+
+```bash
+npm run cards:export  # Export PNG/SVG QRs, VCFs and printable HTML to artifacts/business-cards
+npm run cards:check   # Check local routes, contact files and decode all six PNG QRs
+```
+
+Re-export after editing names, roles, contact details or `site.url`. Downloads from the website
+are generated from current content. `printable-visiting-cards.html` contains self-contained
+90 × 55 mm front/back proofs, not an aligned duplex sheet. Print at 100% with backgrounds.
+
 ## Media
 
 - `public/video/hero-poster.jpg`: hero background still (Pexels 5716999, free licence).
