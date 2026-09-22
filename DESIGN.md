@@ -53,11 +53,11 @@ or the navy variant `bg-navy text-white`, or soft `bg-surface-2 text-blue`.
 
 Images: `next/image` with `fill` inside a `relative` box with `aspect-*` or fixed height,
 `sizes` set, `className="object-cover"`. Tile images live in `public/images/tiles/`:
-desk.jpg (1400x788 landscape), reception.jpg (788x1400 portrait), cleaning.jpg (1400x738), team.jpg
-(738x1400 portrait), facade.jpg (788x1400 portrait), handshake.jpg (738x1400 portrait),
+open-plan.jpg (1400x788 landscape), cleaning.jpg (1400x738),
+facade.jpg (788x1400 portrait),
 atrium.jpg (738x1400 portrait). Founder: `/images/founder-portrait.jpg` (352x440),
-`/images/founder-wide.jpg` (627x428). Tile video loops (7s, muted): `/video/tile-reception.mp4`,
-`/video/tile-team.mp4`, `/video/tile-facade.mp4` (use with `autoPlay muted loop playsInline`,
+`/images/founder-wide.jpg` (627x428). Tile video loops (7s, muted): `/video/tile-open-plan.mp4`,
+`/video/tile-events.mp4`, `/video/tile-facade.mp4` (use with `autoPlay muted loop playsInline`,
 poster = the matching still, paused under reduced motion, only on `lg` and above).
 
 ## 4. Shared components
@@ -145,7 +145,7 @@ Layout 5/7 on lg: left, the portrait (`founder.photo.portrait`, `next/image` 352
 rotated (-2deg) with a white-on-navy caption card overlapping its bottom-right: name (`text-h4`),
 role (`text-small text-cyan`), the two education lines (`text-caption text-white/60`).
 Right: two bio paragraphs (`text-body text-white/75`), then "Has worked directly with" as three
-rows of chips (donors, government, employers) with a small `text-caption uppercase tracking`
+rows of chips (donors, government, organisations) with a small `text-caption uppercase tracking`
 row label in `text-white/45`; then `founder.teamNote` in `text-caption text-white/50` (not italic).
 Files: `Leadership.tsx`, `FounderCard.tsx`.
 

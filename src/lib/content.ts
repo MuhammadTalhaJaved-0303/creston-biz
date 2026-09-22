@@ -65,7 +65,7 @@ export const services = [
     promise: "Creston provides professional administrative and operational support to organizations that need efficient day-to-day office management.",
     objective: "To create organized, efficient and professionally managed office operations through people, processes and systems.",
     value: "Keep the organization running efficiently.",
-    image: { src: "/images/tiles/desk.jpg", alt: "Two colleagues working together at a bright office desk", video: "/video/tile-desk.mp4" },
+    image: { src: "/images/tiles/open-plan.jpg", alt: "An empty open-plan office with desks, monitors and chairs ready for the working day", video: "/video/tile-open-plan.mp4" },
     scope: [
       "Front Office & Reception Support",
       "Administrative Assistance",
@@ -166,7 +166,7 @@ export const founder = {
   name: "Syed Hasan Ghazanfar",
   role: "Founder and Chief Executive Officer",
   photo: { portrait: "/images/founder-portrait.jpg", wide: "/images/founder-wide.jpg" },
-  education: ["MBA, Human Resource and Development, Superior University Lahore", "BBA (Hons), Superior University Lahore"],
+  education: ["MBA, Human Resource and Development", "BBA (Hons)"],
   bio: [
     "Hasan is a senior administration, operations and government-liaison leader with a career spanning manufacturing, corporate and internationally donor-funded environments. He has run multi-site offices, managed fleets and facilities, and controlled administration and logistics budgets for programmes funded by FCDO, the World Bank and USAID.",
     "His career spans senior roles at Chawla Group of Industries, the International Water Management Institute, Adam Smith International and Ferozsons Laboratories, directing HR, administration, procurement, fleet and facilities functions for large workforces. He founded Creston Biz to bring that operational discipline to Pakistani organisations as a managed service.",
@@ -175,7 +175,7 @@ export const founder = {
     label: "Has worked directly with",
     donors: ["FCDO", "DFID", "World Bank", "USAID"],
     government: ["FBR", "Pakistan Customs", "LESCO", "LDA", "Labour Department"],
-    employers: ["Chawla Group of Industries", "International Water Management Institute", "Adam Smith International", "Ferozsons Laboratories"],
+    organisations: ["Chawla Group of Industries", "International Water Management Institute", "Adam Smith International", "Ferozsons Laboratories"],
   },
   teamNote: "The delivery team grows with each engagement. New team members are introduced here as they join.",
 } as const;

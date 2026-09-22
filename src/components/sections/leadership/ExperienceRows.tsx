@@ -7,11 +7,11 @@ type Row = { readonly label: string; readonly icon: LucideIcon; readonly items: 
 const rows: ReadonlyArray<Row> = [
   { label: "Donors", icon: HandCoins, items: founder.experience.donors },
   { label: "Government", icon: Landmark, items: founder.experience.government },
-  { label: "Employers", icon: Building2, items: founder.experience.employers },
+  { label: "Organisations", icon: Building2, items: founder.experience.organisations },
 ];
 
 /**
- * Frosted navy panel listing the donors, agencies and employers the founder
+ * Frosted navy panel listing the donors, agencies and organisations the founder
  * has worked with directly, one labelled row of chips per group.
  */
 export function ExperienceRows() {
