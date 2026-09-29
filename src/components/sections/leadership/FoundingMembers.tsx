@@ -3,8 +3,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { foundingMembers } from "@/lib/content";
 
 const copy = {
-  heading: "Founding members",
-  lede: "Two founding members set the company's direction alongside Hasan, bringing technology, training and business growth to the model.",
+  heading: "Directors",
 } as const;
 
 /** The founding members under the founder: portrait, role and what each brings to Creston. */
@@ -14,7 +13,6 @@ export function FoundingMembers() {
       <Reveal>
         <div className="flex flex-col gap-3 border-t border-white/10 pt-10">
           <h3 className="text-h3 text-white">{copy.heading}</h3>
-          <p className="text-body max-w-[60ch] text-white/70">{copy.lede}</p>
         </div>
       </Reveal>
 
