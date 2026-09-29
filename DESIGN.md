@@ -52,13 +52,15 @@ Icons: `lucide-react` (import named icons). Size 18 to 24px, `strokeWidth={1.75}
 or the navy variant `bg-navy text-white`, or soft `bg-surface-2 text-blue`.
 
 Images: `next/image` with `fill` inside a `relative` box with `aspect-*` or fixed height,
-`sizes` set, `className="object-cover"`. Tile images live in `public/images/tiles/`:
+`sizes` set, `object-cover` for service tiles and `object-contain` for leadership portraits.
+Tile images live in `public/images/tiles/`:
 open-plan.jpg (1400x788 landscape), cleaning.jpg (1400x738),
 facade.jpg (788x1400 portrait),
-atrium.jpg (738x1400 portrait). Founder: `/images/founder-portrait.jpg` (352x440),
-`/images/founder-wide.jpg` (627x428). Tile video loops (7s, muted): `/video/tile-open-plan.mp4`,
-`/video/tile-events.mp4`, `/video/tile-facade.mp4` (use with `autoPlay muted loop playsInline`,
-poster = the matching still, paused under reduced motion, only on `lg` and above).
+atrium.jpg (738x1400 portrait), events-management.png (1536x1024 landscape).
+Founder: `/images/founder-portrait-updated.jpg` (640x640).
+Active tile video loops (7s, muted): `/video/tile-open-plan.mp4` and `/video/tile-facade.mp4`
+(paused under reduced motion, only on `lg` and above). Events uses the new still image
+without a hover video. Image provenance and the generation prompt are in `docs/image-assets.md`.
 
 ## 4. Shared components
 
@@ -140,14 +142,17 @@ Files: `Industries.tsx`, `IndustryCard.tsx`, `icons.ts` (name to component map).
 Ground: `bg-navy` band, white text, with the footer-style mesh (`bg-[radial-gradient(...)]` in
 blue/cyan at low alpha) and a subtle `bg-dots` in white at 6%.
 `SectionHeader tone="dark" label="Leadership" title="Led by someone who has run the function, not just sold it."`
-Layout 5/7 on lg: left, the portrait (`founder.photo.portrait`, `next/image` 352x440) inside a
-`rounded-[var(--radius-card)]` frame with `ring-gradient` and a soft glow shadow, slightly
-rotated (-2deg) with a white-on-navy caption card overlapping its bottom-right: name (`text-h4`),
-role (`text-small text-cyan`), the two education lines (`text-caption text-white/60`).
+Layout 5/7 on lg, stacked below lg: left, the supplied 640x640 portrait
+(`founder.photo.portrait`) in the shared `LeadershipPortrait` frame. All three leadership
+photos use a 4:5 frame, up to 320x400 CSS pixels, with `object-contain` so the full photo stays
+visible. Portraits use image quality 95 and responsive sources for high-density screens.
+The caption sits below the photo: name (`text-h4`), role (`text-small text-cyan`), and the
+two education lines (`text-caption text-white/60`). Founding-member cards stack their
+photos above the biography so adjacent text cannot stretch the photo frame.
 Right: two bio paragraphs (`text-body text-white/75`), then "Has worked directly with" as three
 rows of chips (donors, government, organisations) with a small `text-caption uppercase tracking`
 row label in `text-white/45`; then `founder.teamNote` in `text-caption text-white/50` (not italic).
-Files: `Leadership.tsx`, `FounderCard.tsx`.
+Files: `Leadership.tsx`, `FounderCard.tsx`, `FoundingMembers.tsx`, `LeadershipPortrait.tsx`.
 
 ### 8.5 Contact. `id="contact"`, export `Contact`, folder `sections/contact/` + `src/app/actions/inquiry.ts` + `src/lib/inquiry-schema.ts`
 Ground: page `bg` with `bg-mesh`.

@@ -13,9 +13,9 @@ export const hero = {
 export type Stat = { readonly value: number; readonly prefix?: string; readonly suffix?: string; readonly label: string };
 
 export const stats: ReadonlyArray<Stat> = [
-  { value: 14, suffix: "+", label: "Years of operations leadership" },
+  { value: 15, suffix: "+", label: "Years of operations leadership" },
   { value: 10, prefix: "USD ", suffix: "M+", label: "Budgets managed for donor programmes" },
-  { value: 1000, suffix: "+", label: "People across workforces led" },
+  { value: 3000, suffix: "+", label: "People across workforces led" },
   { value: 60, prefix: "30 to ", label: "Day pilot before you commit" },
 ];
 
@@ -89,7 +89,7 @@ export const services = [
     promise: "Creston plans and executes corporate, institutional and organizational events from concept to completion.",
     objective: "To deliver well-organized, professional and memorable events while managing the details, vendors and execution on behalf of the client.",
     value: "Deliver professional experiences and successful events.",
-    image: { src: "/images/tiles/events.jpg", alt: "A speaker presenting on stage at a corporate conference", video: "/video/tile-events.mp4" },
+    image: { src: "/images/tiles/events-management.png", alt: "A corporate event venue prepared with a stage, podium, lighting and rows of guest seating" },
     scope: [
       "Corporate Events & Conferences",
       "Product Launches",
@@ -165,8 +165,8 @@ export const industries: ReadonlyArray<Industry> = [
 export const founder = {
   name: "Syed Hasan Ghazanfar",
   role: "Founder and Chief Executive Officer",
-  photo: { portrait: "/images/founder-portrait.jpg", wide: "/images/founder-wide.jpg" },
-  education: ["MBA, Human Resource and Development", "BBA (Hons)"],
+  photo: { portrait: "/images/founder-portrait-updated.jpg", wide: "/images/founder-wide.jpg" },
+  education: ["MBA, Strategic Management", "BBA, HR and Marketing"],
   bio: [
     "Hasan is a senior administration, operations and government-liaison leader with a career spanning manufacturing, corporate and internationally donor-funded environments. He has run multi-site offices, managed fleets and facilities, and controlled administration and logistics budgets for programmes funded by FCDO, the World Bank and USAID.",
     "His career spans senior roles at Chawla Group of Industries, the International Water Management Institute, Adam Smith International and Ferozsons Laboratories, directing HR, administration, procurement, fleet and facilities functions for large workforces. He founded Creston Biz to bring that operational discipline to Pakistani organisations as a managed service.",

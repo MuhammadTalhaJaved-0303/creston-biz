@@ -8,7 +8,7 @@ import { FounderCard } from "@/components/sections/leadership/FounderCard";
 import { founder } from "@/lib/content";
 
 /**
- * Navy band introducing the founder: a tilted portrait with a caption card
+ * Navy band introducing the founder: a portrait with a caption card
  * on the left, the bio and the organisations he has worked with on the right,
  * then the two founding members.
  */
@@ -39,13 +39,13 @@ export function Leadership() {
         </Reveal>
 
         <div className="mt-14 grid grid-cols-12 gap-x-6 gap-y-16 lg:mt-20">
-          <div className="col-span-12 md:col-span-6 lg:col-span-5">
-            <Reveal className="md:sticky md:top-28">
+          <div className="col-span-12 lg:col-span-5">
+            <Reveal className="lg:sticky lg:top-28">
               <FounderCard />
             </Reveal>
           </div>
 
-          <div className="col-span-12 md:col-span-6 lg:col-span-7 lg:pl-6 xl:pl-10">
+          <div className="col-span-12 lg:col-span-7 lg:pl-6 xl:pl-10">
             <Reveal staggered className="flex flex-col gap-6">
               {founder.bio.map((paragraph) => (
                 <RevealItem key={paragraph}>
